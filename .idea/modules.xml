@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ZetRaspored.iml" filepath="$PROJECT_DIR$/ZetRaspored.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zet-api-util/zet-api-util.iml" filepath="$PROJECT_DIR$/zet-api-util/zet-api-util.iml" />
+    </modules>
+  </component>
+</project>
+
