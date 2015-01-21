@@ -29,9 +29,6 @@ public class Parser {
             tramLines.add(tramText);
         }
 
-        System.out.println("HOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-
-
         return null;
     }
 }
