@@ -1,0 +1,108 @@
+package zet.fer.hr.data;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+
+import java.sql.SQLException;
+
+import zet.fer.hr.Model.Arrival;
+import zet.fer.hr.Model.Ride;
+import zet.fer.hr.Model.Station;
+import zet.fer.hr.Model.Tram;
+
+/**
+ * Created by Jelena on 20.1.2015..
+ */
+public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+
+    //name of the database
+    private static final String DATABASE_NAME = "zet.db";
+   //version of database
+    private static final int DATABASE_VERSION = 1;
+
+    private Dao<Arrival, Integer> arrivalDao = null;
+    private Dao<Ride, Integer> rideDao = null;
+    private Dao<Station, Integer> stationDao = null;
+    private Dao<Tram, Integer> tramDao = null;
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+
+    @Override
+    public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
+        try {
+            Log.i(DatabaseHelper.class.getName(), "onCreate");
+            TableUtils.createTable(connectionSource, Arrival.class);
+            TableUtils.createTable(connectionSource, Ride.class);
+            TableUtils.createTable(connectionSource, Station.class);
+            TableUtils.createTable(connectionSource, Tram.class);
+        } catch (SQLException e) {
+            Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
+        try {
+            Log.i(DatabaseHelper.class.getName(), "onUpgrade");
+            TableUtils.dropTable(connectionSource, Station.class, true);
+            TableUtils.dropTable(connectionSource, Arrival.class, true);
+            TableUtils.dropTable(connectionSource, Ride.class, true);
+            TableUtils.dropTable(connectionSource, Tram.class, true);
+            // after we drop the old databases, we create the new ones
+            onCreate(database, connectionSource);
+        } catch (SQLException e) {
+            Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    public Dao<Arrival, Integer> getaArrivalDao() throws SQLException {
+        if (arrivalDao == null) {
+            arrivalDao = getDao(Arrival.class);
+        }
+        return arrivalDao;
+    }
+
+    public Dao<Ride, Integer> getRideDao() throws SQLException {
+        if (rideDao == null) {
+            rideDao = getDao(Ride.class);
+        }
+        return rideDao;
+    }
+
+    public Dao<Station, Integer> getStationDao() throws SQLException {
+        if (stationDao == null) {
+            stationDao = getDao(Station.class);
+        }
+        return stationDao;
+    }
+
+    public Dao<Tram, Integer> getTramDao() throws SQLException {
+        if (tramDao == null) {
+            tramDao = getDao(Tram.class);
+        }
+        return tramDao;
+    }
+
+    @Override
+    public void close() {
+        super.close();
+
+        arrivalDao = null;
+        rideDao = null;
+        stationDao = null;
+        tramDao = null;
+    }
+}
