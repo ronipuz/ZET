@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
+
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -30,6 +32,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Ride, Integer> rideDao = null;
     private Dao<Station, Integer> stationDao = null;
     private Dao<Tram, Integer> tramDao = null;
+
+    private RuntimeExceptionDao<Tram, Integer> simpleRuntimeTramDao = null;
+    private RuntimeExceptionDao<Arrival, Integer> simpleRuntimeArrivalDao = null;
+    private RuntimeExceptionDao<Station, Integer> simpleRuntimeStationDao = null;
+    private RuntimeExceptionDao<Ride, Integer> simpleRuntimeRideDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -94,6 +101,34 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             tramDao = getDao(Tram.class);
         }
         return tramDao;
+    }
+
+    public RuntimeExceptionDao<Tram, Integer> getRuntimeTramDao() {
+        if (simpleRuntimeTramDao == null) {
+            simpleRuntimeTramDao = getRuntimeExceptionDao(Tram.class);
+        }
+        return simpleRuntimeTramDao;
+    }
+
+    public RuntimeExceptionDao<Arrival, Integer> getRuntimeArrivalDao() {
+        if (simpleRuntimeArrivalDao == null) {
+            simpleRuntimeArrivalDao = getRuntimeExceptionDao(Arrival.class);
+        }
+        return simpleRuntimeArrivalDao;
+    }
+
+    public RuntimeExceptionDao<Ride, Integer> getRuntimeRideDao() {
+        if (simpleRuntimeRideDao == null) {
+            simpleRuntimeRideDao = getRuntimeExceptionDao(Ride.class);
+        }
+        return simpleRuntimeRideDao;
+    }
+
+    public RuntimeExceptionDao<Station, Integer> getRuntimeStationDao() {
+        if (simpleRuntimeStationDao == null) {
+            simpleRuntimeStationDao = getRuntimeExceptionDao(Station.class);
+        }
+        return simpleRuntimeStationDao;
     }
 
     @Override

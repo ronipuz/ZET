@@ -21,6 +21,10 @@ public class Tram {
         //need empty constructor
     }
 
+    public Tram(int tramNumber) {
+        this.tramNumber = tramNumber;
+    }
+
     public int getTramNumber() {
         return tramNumber;
     }

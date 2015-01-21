@@ -29,6 +29,12 @@ public class Arrival {
         //needs empty constructor
     }
 
+    public Arrival(Date time, Ride idRide, Station idStation) {
+        this.time = time;
+        this.idRide = idRide;
+        this.idStation = idStation;
+    }
+
     public Date getTime() {
         return time;
     }

@@ -27,6 +27,12 @@ public class Station {
         //need empty constructor
     }
 
+    public Station(String name, float coordinateX, float coordiinateY) {
+        this.name = name;
+        this.coordinateX = coordinateX;
+        this.coordiinateY = coordiinateY;
+    }
+
     public String getName() {
         return name;
     }

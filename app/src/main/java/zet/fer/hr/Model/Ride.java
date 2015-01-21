@@ -42,6 +42,12 @@ public class Ride {
         //needs empty constructo
     }
 
+    public Ride(Tram idTram, Arrival idArrival, boolean direction) {
+        this.idTram = idTram;
+        this.idArrival = idArrival;
+        this.direction = direction;
+    }
+
     public void setIdTram(Tram idTram) {
         this.idTram = idTram;
     }
