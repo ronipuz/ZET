@@ -25,23 +25,21 @@ public class MainActivity extends OrmLiteBaseActivity<DatabaseHelper> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-        TextView tb1 = new TextView(this);
-        TextView  tb2 = new TextView(this);
+        TextView tb1 = (TextView) findViewById(R.id.text1);
+        TextView  tb2 = (TextView) findViewById(R.id.text2);
 
         Tram tram = new Tram(5);
         Tram tram2 = new Tram(6);
 
         RuntimeExceptionDao<Tram, Integer> tramDao = getHelper().getRuntimeTramDao();
-        List<Tram> trams ;
+        List<Tram> trams;
         tramDao.create(tram);
         tramDao.create(tram2);
         trams = tramDao.queryForAll();
-        tb1.setText(trams.get(0).getIdTram());
-        tb2.setText(trams.get(0).getTramNumber());
-
-
+        tb1.setText(trams.get(0).getIdTram().toString());
+        tb2.setText(trams.get(0).getTramNumber().toString());
 
     }
 

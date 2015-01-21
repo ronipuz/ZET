@@ -7,14 +7,14 @@ package zet.fer.hr.Model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "comments")
+@DatabaseTable(tableName = "tram")
 public class Tram {
 
     @DatabaseField(generatedId = true)
-    private int idTram;
+    private Integer idTram;
 
     @DatabaseField(canBeNull = false)
-    private int tramNumber;
+    private Integer tramNumber;
 
 
     public Tram() {
@@ -25,15 +25,15 @@ public class Tram {
         this.tramNumber = tramNumber;
     }
 
-    public int getTramNumber() {
+    public Integer getTramNumber() {
         return tramNumber;
     }
 
-    public int getIdTram() {
+    public Integer getIdTram() {
         return idTram;
     }
 
-    public void setTramNumber(int tramNumber) {
+    public void setTramNumber(Integer tramNumber) {
         this.tramNumber = tramNumber;
     }
 }

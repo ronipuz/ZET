@@ -11,7 +11,7 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Ride {
 
     @DatabaseField(generatedId = true)
-    private int idRide;
+    private Integer idRide;
 
     @DatabaseField(foreign = true)
     private Tram idTram;
@@ -20,9 +20,9 @@ public class Ride {
     private Arrival idArrival;
 
     @DatabaseField(canBeNull = false)
-    private boolean direction;
+    private Boolean direction;
 
-    public int getIdRide() {
+    public Integer getIdRide() {
         return idRide;
     }
 
@@ -34,15 +34,15 @@ public class Ride {
         return idArrival;
     }
 
-    public boolean isDirection() {
+    public Boolean isDirection() {
         return direction;
     }
 
     public Ride() {
-        //needs empty constructo
+        //needs empty constructor
     }
 
-    public Ride(Tram idTram, Arrival idArrival, boolean direction) {
+    public Ride(Tram idTram, Arrival idArrival, Boolean direction) {
         this.idTram = idTram;
         this.idArrival = idArrival;
         this.direction = direction;
@@ -56,7 +56,7 @@ public class Ride {
         this.idArrival = idArrival;
     }
 
-    public void setDirection(boolean direction) {
+    public void setDirection(Boolean direction) {
         this.direction = direction;
     }
 }

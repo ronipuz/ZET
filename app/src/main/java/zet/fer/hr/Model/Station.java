@@ -7,57 +7,57 @@ package zet.fer.hr.Model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "comments")
+@DatabaseTable(tableName = "station")
 public class Station {
 
 
     @DatabaseField(generatedId = true)
-    private int idStation;
+    private Integer idStation;
 
     @DatabaseField(canBeNull = false)
     private String name ;
 
     @DatabaseField(canBeNull = false)
-    private float coordinateX ;
+    private Float coordinateX ;
 
     @DatabaseField(canBeNull = false)
-    private float coordiinateY ;
+    private Float coordinateY ;
 
     public Station() {
         //need empty constructor
     }
 
-    public Station(String name, float coordinateX, float coordiinateY) {
+    public Station(String name, Float coordinateX, Float coordinateY) {
         this.name = name;
         this.coordinateX = coordinateX;
-        this.coordiinateY = coordiinateY;
+        this.coordinateY = coordinateY;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getIdStation() {
+    public Integer getIdStation() {
         return idStation;
     }
 
-    public float getCoordinateX() {
+    public Float getCoordinateX() {
         return coordinateX;
     }
 
-    public float getCoordiinateY() {
-        return coordiinateY;
+    public Float getCoordinateY() {
+        return coordinateY;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setCoordinateX(float coordinateX) {
+    public void setCoordinateX(Float coordinateX) {
         this.coordinateX = coordinateX;
     }
 
-    public void setCoordiinateY(float coordiinateY) {
-        this.coordiinateY = coordiinateY;
+    public void setCoordinateY(Float coordinateY) {
+        this.coordinateY = coordinateY;
     }
 }
